@@ -1,0 +1,105 @@
+[gd_scene load_steps=13 format=3 uid="uid://c8u6q15abt1b"]
+
+[ext_resource type="Script" uid="uid://coikklx7smkv7" path="res://scripts/clock_scene.gd" id="1_3evs7"]
+[ext_resource type="Texture2D" uid="uid://dwnut6woemstu" path="res://sprites/enviroment/cena_relogio/cenario_1-relogio.png" id="1_55ihv"]
+[ext_resource type="PackedScene" uid="uid://cm0sih118lt2a" path="res://Scenes/player.tscn" id="2_lcwy4"]
+[ext_resource type="PackedScene" uid="uid://b4jtcqll1js16" path="res://Scenes/time_machine.tscn" id="4_fq7o7"]
+[ext_resource type="PackedScene" uid="uid://ds7bvcsfjb0k6" path="res://Scenes/controlador_de_spaw.tscn" id="4_kfabn"]
+[ext_resource type="PackedScene" uid="uid://b0fqcoud73bc8" path="res://Scenes/winlosescreen_1.tscn" id="5_fq7o7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_usfcy"]
+size = Vector2(192, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kfabn"]
+size = Vector2(192, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fq7o7"]
+size = Vector2(192, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lcwy4"]
+size = Vector2(1277, 59)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3evs7"]
+size = Vector2(34, 456)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ra004"]
+size = Vector2(43, 451)
+
+[node name="clock_scene" type="Node2D"]
+script = ExtResource("1_3evs7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+scale = Vector2(2, 2)
+texture = ExtResource("1_55ihv")
+
+[node name="Time_machine" parent="." instance=ExtResource("4_fq7o7")]
+
+[node name="AnimatedSprite2D" parent="Time_machine" index="0"]
+animation = &"full_life"
+
+[node name="Marker2D" parent="Time_machine" index="4"]
+position = Vector2(939, 462)
+
+[node name="Marker2D2" parent="Time_machine" index="5"]
+position = Vector2(643, 592)
+
+[node name="Marker2D3" parent="Time_machine" index="6"]
+position = Vector2(352, 462)
+
+[node name="Marker2D4" parent="Time_machine" index="7"]
+position = Vector2(644, 332)
+
+[node name="Player" parent="." instance=ExtResource("2_lcwy4")]
+position = Vector2(106, 628)
+
+[node name="plataform" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="plataform"]
+position = Vector2(350, 544)
+shape = SubResource("RectangleShape2D_usfcy")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="plataform"]
+position = Vector2(644, 414)
+shape = SubResource("RectangleShape2D_kfabn")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="plataform"]
+position = Vector2(938, 544)
+shape = SubResource("RectangleShape2D_fq7o7")
+
+[node name="ground" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground"]
+position = Vector2(638.5, 685.5)
+shape = SubResource("RectangleShape2D_lcwy4")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ground"]
+position = Vector2(-12, 426)
+shape = SubResource("RectangleShape2D_3evs7")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="ground"]
+position = Vector2(1296.5, 429.5)
+shape = SubResource("RectangleShape2D_ra004")
+
+[node name="controlador_de_spaw" parent="." instance=ExtResource("4_kfabn")]
+
+[node name="Marker2D" parent="controlador_de_spaw" index="4"]
+position = Vector2(-30, 322)
+
+[node name="Marker2D2" parent="controlador_de_spaw" index="5"]
+position = Vector2(634, -9)
+
+[node name="Marker2D3" parent="controlador_de_spaw" index="6"]
+position = Vector2(1307, 308)
+
+[node name="Marker2D4" parent="controlador_de_spaw" index="7"]
+position = Vector2(28, 641)
+
+[node name="Marker2D5" parent="controlador_de_spaw" index="8"]
+position = Vector2(1258, 640)
+
+[node name="Winlosescreen1" parent="." instance=ExtResource("5_fq7o7")]
+
+[editable path="Time_machine"]
+[editable path="Player"]
+[editable path="controlador_de_spaw"]

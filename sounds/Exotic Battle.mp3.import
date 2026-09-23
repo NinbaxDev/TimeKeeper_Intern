@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bpnvt3hpc0xly"
+path="res://.godot/imported/Exotic Battle.mp3-96b44e8508608cc67d287a78dced64a1.mp3str"
+
+[deps]
+
+source_file="res://sounds/Exotic Battle.mp3"
+dest_files=["res://.godot/imported/Exotic Battle.mp3-96b44e8508608cc67d287a78dced64a1.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

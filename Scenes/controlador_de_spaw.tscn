@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://ds7bvcsfjb0k6"]
+
+[ext_resource type="Script" uid="uid://cnqj4vcso1vh" path="res://controlador_de_spaw.gd" id="1_082j2"]
+
+[node name="controlador_de_spaw" type="Node"]
+script = ExtResource("1_082j2")
+
+[node name="tempo_limite" type="Timer" parent="."]
+wait_time = 60.0
+one_shot = true
+
+[node name="tempo_ghost" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="tempo_ball" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="tempo_troca" type="Timer" parent="."]
+wait_time = 6.0
+one_shot = true
+
+[node name="Marker2D" type="Marker2D" parent="."]
+
+[node name="Marker2D2" type="Marker2D" parent="."]
+
+[node name="Marker2D3" type="Marker2D" parent="."]
+
+[node name="Marker2D4" type="Marker2D" parent="."]
+
+[node name="Marker2D5" type="Marker2D" parent="."]
+
+[connection signal="timeout" from="tempo_limite" to="." method="_on_tempo_limite_timeout"]
+[connection signal="timeout" from="tempo_ghost" to="." method="_on_tempo_ghost_timeout"]
+[connection signal="timeout" from="tempo_ball" to="." method="_on_tempo_ball_timeout"]
+[connection signal="timeout" from="tempo_troca" to="." method="_on_tempo_troca_timeout"]

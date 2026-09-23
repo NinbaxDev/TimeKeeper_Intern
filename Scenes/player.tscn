@@ -1,0 +1,310 @@
+[gd_scene format=3 uid="uid://cm0sih118lt2a"]
+
+[ext_resource type="Script" uid="uid://0ljka7iyivyb" path="res://scripts/player.gd" id="1_kyqiw"]
+[ext_resource type="Texture2D" uid="uid://dty7p54ckxaou" path="res://sprites/Mago/mago_left.png" id="2_3smsa"]
+[ext_resource type="Texture2D" uid="uid://dup4qdw01g3le" path="res://sprites/Mago/stick1.png" id="2_7dp3o"]
+[ext_resource type="Texture2D" uid="uid://dqg8w2vwockj3" path="res://sprites/Mago/mago_sprite.png" id="2_fkybt"]
+[ext_resource type="Texture2D" uid="uid://os20hrkglco2" path="res://sprites/Mago/mago_right.png" id="3_8erm5"]
+[ext_resource type="Script" uid="uid://w23mil4nsys5" path="res://scripts/relogio.gd" id="3_dewec"]
+[ext_resource type="Script" path="res://scripts/Hitbox.gd" id="3_f1ek2"]
+[ext_resource type="Texture2D" uid="uid://bklkhlej5uali" path="res://sprites/Mago/stick2.png" id="3_h4iuc"]
+[ext_resource type="Script" uid="uid://x0kafsv7u3fa" path="res://Scenes/RelogioScript.gd" id="4_5ixxa"]
+[ext_resource type="Texture2D" uid="uid://duojcleyqk37b" path="res://sprites/Mago/stick3.png" id="4_fd4e3"]
+[ext_resource type="Script" uid="uid://ddcpka0mxpjuu" path="res://scripts/pause_screen.gd" id="5_fkybt"]
+[ext_resource type="Texture2D" uid="uid://bw1t8vgr58vv1" path="res://sprites/Mago/stick.png" id="5_qqcod"]
+[ext_resource type="Script" uid="uid://bkeslyp0uu6et" path="res://Scenes/hud.gd" id="10_l6n3p"]
+[ext_resource type="AudioStream" uid="uid://dvpa4u52ur1js" path="res://sounds/jump.wav" id="10_tx1dd"]
+[ext_resource type="AudioStream" uid="uid://bjwoo0xfu6o72" path="res://sounds/GolpeEspada.wav" id="11_gymyn"]
+[ext_resource type="Texture2D" uid="uid://dcre3pwc7awee" path="res://sprites/Mago/life_bar_over.png" id="12_fd4e3"]
+[ext_resource type="Script" uid="uid://bok2wkkflp4bc" path="res://scripts/life_bar.gd" id="12_h4iuc"]
+[ext_resource type="FontFile" uid="uid://b2sq8sy45db8v" path="res://Jersey15-Regular.ttf" id="15_qqcod"]
+[ext_resource type="AudioStream" uid="uid://d3onv2c31leaw" path="res://sounds/click.wav" id="18_igrcy"]
+[ext_resource type="Script" uid="uid://cflbytykjjwar" path="res://scripts/hit_area_player.gd" id="19_fs7ks"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_igrcy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7dp3o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_h4iuc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fd4e3")
+}],
+"loop": true,
+"name": &"golpe",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_qqcod")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tx1dd"]
+radius = 20.7657
+height = 87.1855
+
+[sub_resource type="Animation" id="Animation_gymyn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D/Hitbox/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_f1ek2"]
+resource_name = "ataque"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D/Hitbox/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.0666667, 0.366667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_tx1dd"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D/Hitbox/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pu2lt"]
+_data = {
+&"RESET": SubResource("Animation_gymyn"),
+&"ataque": SubResource("Animation_f1ek2"),
+&"idle": SubResource("Animation_tx1dd")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f1ek2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_3smsa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_8erm5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_fkybt")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_fkybt")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7dp3o"]
+radius = 14.0
+height = 64.0
+
+[sub_resource type="Gradient" id="Gradient_fd4e3"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qqcod"]
+gradient = SubResource("Gradient_fd4e3")
+width = 200
+
+[sub_resource type="Gradient" id="Gradient_igrcy"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fs7ks"]
+gradient = SubResource("Gradient_igrcy")
+width = 200
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l6n3p"]
+radius = 15.0
+height = 68.0
+
+[node name="Player" type="CharacterBody2D" unique_id=2094558760 groups=["Player"]]
+script = ExtResource("1_kyqiw")
+
+[node name="Melee" type="Node2D" parent="." unique_id=568419516]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Melee" unique_id=1595496888]
+z_index = 1
+position = Vector2(-16, 5)
+scale = Vector2(1.01563, 0.984375)
+sprite_frames = SubResource("SpriteFrames_igrcy")
+animation = &"golpe"
+offset = Vector2(9.53674e-07, -16.254)
+
+[node name="Hitbox" type="Area2D" parent="Melee/AnimatedSprite2D" unique_id=626769427]
+position = Vector2(-234.312, -427.016)
+rotation = -0.261799
+scale = Vector2(1.54594, 1.82553)
+script = ExtResource("3_f1ek2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Melee/AnimatedSprite2D/Hitbox" unique_id=120381809]
+position = Vector2(60.8225, 226.584)
+shape = SubResource("CapsuleShape2D_tx1dd")
+disabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Melee" unique_id=1110172535]
+libraries/ = SubResource("AnimationLibrary_pu2lt")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1484063802]
+texture_filter = 1
+position = Vector2(3, -7.5)
+scale = Vector2(2.0625, 2.03125)
+sprite_frames = SubResource("SpriteFrames_f1ek2")
+animation = &"Walk"
+autoplay = "idle"
+frame_progress = 0.363854
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=573809962]
+position = Vector2(1, -8)
+shape = SubResource("CapsuleShape2D_7dp3o")
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1040012914]
+script = ExtResource("10_l6n3p")
+
+[node name="Control" type="Control" parent="HUD" unique_id=1914973861]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="HUD/Control" unique_id=675140]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 65.0
+offset_right = 221.0
+offset_bottom = 134.0
+script = ExtResource("3_dewec")
+
+[node name="Label" type="Label" parent="HUD/Control/Panel" unique_id=579423020]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -34.5
+offset_right = 104.0
+offset_bottom = 34.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+
+[node name="Timer" type="Timer" parent="HUD/Control/Panel" unique_id=393285382]
+process_callback = 0
+wait_time = 60.0
+one_shot = true
+script = ExtResource("4_5ixxa")
+
+[node name="Life_bar" type="TextureProgressBar" parent="HUD" unique_id=652590068]
+offset_right = 200.0
+offset_bottom = 64.0
+texture_under = SubResource("GradientTexture2D_qqcod")
+texture_over = ExtResource("12_fd4e3")
+texture_progress = SubResource("GradientTexture2D_fs7ks")
+script = ExtResource("12_h4iuc")
+
+[node name="TimerPuloDinamico" type="Timer" parent="." unique_id=1491471828]
+wait_time = 0.17
+one_shot = true
+
+[node name="DuracaoDash" type="Timer" parent="." unique_id=1756338676]
+wait_time = 0.2
+one_shot = true
+
+[node name="CooldownDash" type="Timer" parent="." unique_id=926793464]
+wait_time = 5.0
+one_shot = true
+
+[node name="Pause_screen" type="CanvasLayer" parent="." unique_id=684421025]
+process_mode = 3
+script = ExtResource("5_fkybt")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Pause_screen" unique_id=1453965981]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -20.0
+offset_right = 25.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Back" type="Button" parent="Pause_screen/VBoxContainer" unique_id=1218037767]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("15_qqcod")
+theme_override_font_sizes/font_size = 32
+text = "BACK"
+
+[node name="EXIT" type="Button" parent="Pause_screen/VBoxContainer" unique_id=290702266]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("15_qqcod")
+theme_override_font_sizes/font_size = 32
+text = "BACK TO MENU"
+
+[node name="AttackLength" type="Timer" parent="." unique_id=1283113582]
+wait_time = 0.2
+
+[node name="sfx_pulo" type="AudioStreamPlayer2D" parent="." unique_id=1058471446]
+stream = ExtResource("10_tx1dd")
+volume_db = -15.0
+
+[node name="sfx_golpe" type="AudioStreamPlayer2D" parent="." unique_id=982159700]
+stream = ExtResource("11_gymyn")
+volume_db = -15.0
+
+[node name="sfx_click" type="AudioStreamPlayer2D" parent="." unique_id=790898543]
+stream = ExtResource("18_igrcy")
+
+[node name="hit_area_player" type="Area2D" parent="." unique_id=1782914798]
+script = ExtResource("19_fs7ks")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hit_area_player" unique_id=719607486]
+position = Vector2(1, -8)
+shape = SubResource("CapsuleShape2D_l6n3p")
+
+[connection signal="timeout" from="HUD/Control/Panel/Timer" to="HUD/Control/Panel/Timer" method="_on_timeout"]
+[connection signal="timeout" from="TimerPuloDinamico" to="." method="_on_timer_pulo_dinamico_timeout"]
+[connection signal="timeout" from="DuracaoDash" to="." method="_on_duracao_dash_timeout"]
+[connection signal="timeout" from="CooldownDash" to="." method="_on_cooldown_dash_timeout"]
+[connection signal="pressed" from="Pause_screen/VBoxContainer/Back" to="Pause_screen" method="_on_back_pressed"]
+[connection signal="pressed" from="Pause_screen/VBoxContainer/EXIT" to="Pause_screen" method="_on_exit_pressed"]
+[connection signal="timeout" from="AttackLength" to="." method="_on_attack_length_timeout"]
+[connection signal="body_entered" from="hit_area_player" to="hit_area_player" method="_on_body_entered"]

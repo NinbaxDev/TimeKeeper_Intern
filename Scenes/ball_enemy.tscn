@@ -1,0 +1,50 @@
+[gd_scene load_steps=9 format=3 uid="uid://bhoyis74hrma1"]
+
+[ext_resource type="Script" uid="uid://jhmci0aamkdp" path="res://scripts/ball_enemy.gd" id="1_c2tud"]
+[ext_resource type="Texture2D" uid="uid://clbwonflvuiwy" path="res://sprites/enemies/ball/time_ball1.png" id="2_oierr"]
+[ext_resource type="Texture2D" uid="uid://bdv2gbm4vvx6e" path="res://sprites/enemies/ball/time_ball2.png" id="3_d2hf2"]
+[ext_resource type="Script" uid="uid://d35faa8f4yieb" path="res://scripts/Hurtbox.gd" id="4_d2hf2"]
+[ext_resource type="AudioStream" uid="uid://xvhr8mk7d7ba" path="res://sounds/Dano.wav" id="4_oierr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_caru6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_oierr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_d2hf2")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q7t1u"]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vqfbk"]
+radius = 15.0
+
+[node name="Ball_enemy" type="CharacterBody2D" groups=["Enemy_ball"]]
+script = ExtResource("1_c2tud")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_caru6")
+animation = &"idle"
+
+[node name="Hurtbox" type="Area2D" parent="."]
+script = ExtResource("4_d2hf2")
+
+[node name="area_collision" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(1, -1)
+shape = SubResource("CircleShape2D_q7t1u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -1)
+shape = SubResource("CircleShape2D_vqfbk")
+
+[node name="sfx_dano" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_oierr")
+
+[connection signal="body_entered" from="Hurtbox" to="Hurtbox" method="_on_body_entered"]

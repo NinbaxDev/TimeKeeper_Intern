@@ -1,0 +1,96 @@
+[gd_scene load_steps=11 format=3 uid="uid://b4jtcqll1js16"]
+
+[ext_resource type="Script" uid="uid://dginryf8ox4lo" path="res://scripts/time_machine1.gd" id="1_ewjlc"]
+[ext_resource type="Texture2D" uid="uid://ds8pqig2vdq55" path="res://sprites/enviroment/cena_relogio/time_machine1.png" id="2_onnro"]
+[ext_resource type="Texture2D" uid="uid://dgqmtpxbr0obv" path="res://sprites/enviroment/cena_relogio/time_machine2.png" id="3_6nbht"]
+[ext_resource type="Texture2D" uid="uid://dpmmutw3avyy2" path="res://sprites/enviroment/cena_relogio/time_machine3.png" id="4_o1u2s"]
+[ext_resource type="Texture2D" uid="uid://dvyd77cnnqvlr" path="res://sprites/enviroment/cena_relogio/time_machine4.png" id="5_0f1st"]
+[ext_resource type="Texture2D" uid="uid://bx6x0qa0fnlwp" path="res://sprites/enviroment/cena_relogio/time_machine5.png" id="6_x324t"]
+[ext_resource type="Texture2D" uid="uid://fs70j2mquxfe" path="res://sprites/enviroment/cena_relogio/time_machine6.png" id="7_1ufqo"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0phvc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_onnro")
+}],
+"loop": true,
+"name": &"full_life",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_6nbht")
+}],
+"loop": true,
+"name": &"hit_1",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_o1u2s")
+}],
+"loop": true,
+"name": &"hit_2",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_0f1st")
+}],
+"loop": true,
+"name": &"hit_3",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_x324t")
+}],
+"loop": true,
+"name": &"hit_4",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_1ufqo")
+}],
+"loop": true,
+"name": &"hit_5",
+"speed": 0.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l30qk"]
+size = Vector2(128, 51)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_11u8n"]
+size = Vector2(76, 65)
+
+[node name="Time_machine" type="Area2D"]
+script = ExtResource("1_ewjlc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_0phvc")
+animation = &"hit_5"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 38.5)
+shape = SubResource("RectangleShape2D_l30qk")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(1, -19.5)
+shape = SubResource("RectangleShape2D_11u8n")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true
+
+[node name="Marker2D" type="Marker2D" parent="."]
+
+[node name="Marker2D2" type="Marker2D" parent="."]
+
+[node name="Marker2D3" type="Marker2D" parent="."]
+
+[node name="Marker2D4" type="Marker2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

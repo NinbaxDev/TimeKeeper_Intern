@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://djffgadeffnch"]
+
+[ext_resource type="Texture2D" uid="uid://d37vdkwl28t05" path="res://sprites/enviroment/quarto.png" id="1_e80bh"]
+[ext_resource type="Script" uid="uid://ds4r6e45x7q31" path="res://scripts/room_scene.gd" id="1_ltrk6"]
+[ext_resource type="PackedScene" uid="uid://cm0sih118lt2a" path="res://Scenes/player.tscn" id="2_gw577"]
+[ext_resource type="Script" uid="uid://mpmuxe5ieskf" path="res://scripts/area_beed.gd" id="3_4ih6r"]
+[ext_resource type="Texture2D" uid="uid://moqalfbk1uq1" path="res://sprites/enviroment/menu/button_next_day.png" id="4_ltrk6"]
+[ext_resource type="AudioStream" uid="uid://d3onv2c31leaw" path="res://sounds/click.wav" id="6_gmo20"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ih6r"]
+size = Vector2(1279, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ltrk6"]
+size = Vector2(51, 786)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_grewx"]
+size = Vector2(58, 742)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gmo20"]
+size = Vector2(329, 261)
+
+[node name="room_scene" type="Node2D" unique_id=1965658776]
+script = ExtResource("1_ltrk6")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=380179035]
+position = Vector2(640, 360)
+scale = Vector2(8, 8)
+texture = ExtResource("1_e80bh")
+
+[node name="Player" parent="." unique_id=758381780 instance=ExtResource("2_gw577")]
+position = Vector2(188, 596)
+scale = Vector2(5, 5)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=259490455]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1757290450]
+position = Vector2(638.5, 730)
+shape = SubResource("RectangleShape2D_4ih6r")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=163876555]
+position = Vector2(-27.5, 367)
+shape = SubResource("RectangleShape2D_ltrk6")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=1734975712]
+position = Vector2(1309, 366)
+shape = SubResource("RectangleShape2D_grewx")
+
+[node name="next_day_layer" type="CanvasLayer" parent="." unique_id=671254617]
+visible = false
+
+[node name="Next_day_button" type="Button" parent="next_day_layer" unique_id=571076219]
+visible = false
+offset_left = 974.0
+offset_top = 399.0
+offset_right = 1092.0
+offset_bottom = 439.0
+icon = ExtResource("4_ltrk6")
+flat = true
+
+[node name="area_beed" type="Area2D" parent="." unique_id=1348326338]
+position = Vector2(1035, 613)
+script = ExtResource("3_4ih6r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="area_beed" unique_id=1697295309]
+position = Vector2(-4.5, -22.5)
+shape = SubResource("RectangleShape2D_gmo20")
+
+[node name="sfx_click" type="AudioStreamPlayer2D" parent="." unique_id=516864245]
+stream = ExtResource("6_gmo20")
+
+[connection signal="pressed" from="next_day_layer/Next_day_button" to="area_beed" method="_on_next_day_button_pressed"]
+[connection signal="body_entered" from="area_beed" to="area_beed" method="_on_body_entered"]
+[connection signal="body_exited" from="area_beed" to="area_beed" method="_on_body_exited"]

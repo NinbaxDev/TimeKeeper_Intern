@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b1wa2lmec5yye"
+path="res://.godot/imported/Lord of the Land.mp3-615d4fa0d56331b059ff309dfa5daf55.mp3str"
+
+[deps]
+
+source_file="res://sounds/Lord of the Land.mp3"
+dest_files=["res://.godot/imported/Lord of the Land.mp3-615d4fa0d56331b059ff309dfa5daf55.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

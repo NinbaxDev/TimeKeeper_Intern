@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0fqcoud73bc8"]
+
+[ext_resource type="Script" uid="uid://dqb0terg1ai1r" path="res://winlosescreen_1.gd" id="1_dt0nf"]
+[ext_resource type="FontFile" uid="uid://b2sq8sy45db8v" path="res://Jersey15-Regular.ttf" id="2_c1bow"]
+
+[node name="Winlosescreen1" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dt0nf")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="texto_de" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -32.5
+offset_right = 20.0
+offset_bottom = 32.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_c1bow")
+theme_override_font_sizes/font_size = 64

@@ -1,0 +1,78 @@
+[gd_scene load_steps=5 format=3 uid="uid://bs16w8q4lwkb7"]
+
+[ext_resource type="Script" uid="uid://cwyvvhqx36n3k" path="res://transition_day_scene.gd" id="1_5awx6"]
+[ext_resource type="FontFile" uid="uid://b2sq8sy45db8v" path="res://Jersey15-Regular.ttf" id="2_1psn1"]
+[ext_resource type="Texture2D" uid="uid://bsb8hxtgc6xxi" path="res://sprites/enviroment/menu/button_Play.png" id="3_a00kv"]
+[ext_resource type="AudioStream" uid="uid://d3onv2c31leaw" path="res://sounds/click.wav" id="4_1psn1"]
+
+[node name="transition_day_scene" type="Node2D"]
+script = ExtResource("1_5awx6")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.215902, 0.215902, 0.215902, 1)
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 589.0
+offset_top = 360.0
+offset_right = 702.0
+offset_bottom = 397.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_1psn1")
+theme_override_font_sizes/font_size = 64
+text = "NEXT DAY IS COMING
+CONTINUE YOUR JOB"
+
+[node name="Play_button" type="Button" parent="."]
+offset_left = 574.0
+offset_top = 490.0
+offset_right = 692.0
+offset_bottom = 530.0
+icon = ExtResource("3_a00kv")
+flat = true
+
+[node name="Label2" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 397.0
+offset_top = 173.0
+offset_right = 890.0
+offset_bottom = 306.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_1psn1")
+theme_override_font_sizes/font_size = 64
+text = "YOU ARE FIRED
+GET OUT OF MY TOWER"
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="Congratulations" type="Label" parent="."]
+offset_left = 311.0
+offset_top = 209.0
+offset_right = 987.0
+offset_bottom = 410.0
+theme_override_fonts/font = ExtResource("2_1psn1")
+theme_override_font_sizes/font_size = 64
+text = "YOU DONE THE JOB VERY WELL.
+YOU CAN TAKE A VACATION
+THANKS FOR YOUR TIME"
+horizontal_alignment = 1
+
+[node name="sfx_click" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_1psn1")
+
+[connection signal="pressed" from="Play_button" to="." method="_on_play_button_pressed"]

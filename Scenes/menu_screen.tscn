@@ -1,0 +1,84 @@
+[gd_scene load_steps=9 format=3 uid="uid://bdyqhn337vnit"]
+
+[ext_resource type="Script" uid="uid://dmmh3risb4nbr" path="res://scripts/menu_screen.gd" id="1_tuusc"]
+[ext_resource type="FontFile" uid="uid://b2sq8sy45db8v" path="res://Jersey15-Regular.ttf" id="2_iefc8"]
+[ext_resource type="Texture2D" uid="uid://dwxvdj4mvb6k2" path="res://sprites/enviroment/menu/background_menu.png" id="2_qjfvo"]
+[ext_resource type="Texture2D" uid="uid://bsb8hxtgc6xxi" path="res://sprites/enviroment/menu/button_Play.png" id="4_lfpg5"]
+[ext_resource type="Texture2D" uid="uid://deqjraxhmglsc" path="res://sprites/enviroment/menu/button_extras.png" id="5_68vtp"]
+[ext_resource type="Texture2D" uid="uid://4hvbjvlkjnh" path="res://sprites/enviroment/menu/button_control.png" id="5_lfpg5"]
+[ext_resource type="Texture2D" uid="uid://cyajgvsj1diai" path="res://sprites/enviroment/menu/button_quit.png" id="6_g50d1"]
+[ext_resource type="AudioStream" uid="uid://d3onv2c31leaw" path="res://sounds/click.wav" id="8_68vtp"]
+
+[node name="Menu_screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tuusc")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+scale = Vector2(2, 2)
+texture = ExtResource("2_qjfvo")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.0
+offset_top = 25.0
+offset_right = 62.0
+offset_bottom = 153.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Play" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_iefc8")
+icon = ExtResource("4_lfpg5")
+flat = true
+
+[node name="Control" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+icon = ExtResource("5_lfpg5")
+flat = true
+
+[node name="Config_credits" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_iefc8")
+icon = ExtResource("5_68vtp")
+flat = true
+
+[node name="Exit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_iefc8")
+icon = ExtResource("6_g50d1")
+flat = true
+
+[node name="control_text" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="control_text"]
+visible = false
+offset_left = 197.0
+offset_top = 362.0
+offset_right = 410.0
+offset_bottom = 503.0
+theme_override_fonts/font = ExtResource("2_iefc8")
+theme_override_font_sizes/font_size = 32
+text = "A - Left
+D - Right
+Space - Jump
+Left click - Attack"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_68vtp")
+
+[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/Control" to="." method="_on_control_pressed"]
+[connection signal="pressed" from="VBoxContainer/Config_credits" to="." method="_on_config_credits_pressed"]
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]

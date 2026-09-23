@@ -1,0 +1,51 @@
+[gd_scene load_steps=9 format=3 uid="uid://dkktcp5fv0ex8"]
+
+[ext_resource type="Script" uid="uid://bymd80wv4akpq" path="res://scripts/enemy_ghost.gd" id="1_fdgh2"]
+[ext_resource type="Texture2D" uid="uid://mptrhkfvgy6j" path="res://sprites/enemies/ghost/time_ghost.png" id="2_gsrj2"]
+[ext_resource type="Texture2D" uid="uid://c0vpa4bb81suc" path="res://sprites/enemies/ghost/time_ghost2.png" id="3_6wehv"]
+[ext_resource type="Script" uid="uid://d35faa8f4yieb" path="res://scripts/Hurtbox.gd" id="4_6wehv"]
+[ext_resource type="AudioStream" uid="uid://xvhr8mk7d7ba" path="res://sounds/Dano.wav" id="5_tjfxr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tjfxr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_gsrj2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6wehv")
+}],
+"loop": true,
+"name": &"posi1",
+"speed": 2.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6wehv"]
+size = Vector2(38, 37)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tjfxr"]
+size = Vector2(40, 38)
+
+[node name="Enemy_ghost" type="CharacterBody2D" groups=["Enemy"]]
+script = ExtResource("1_fdgh2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_tjfxr")
+animation = &"posi1"
+frame = 1
+frame_progress = 0.929583
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_6wehv")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+script = ExtResource("4_6wehv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_tjfxr")
+
+[node name="sfx_dano" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_tjfxr")
+volume_db = -15.0

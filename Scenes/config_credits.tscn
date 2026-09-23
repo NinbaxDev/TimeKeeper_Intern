@@ -1,0 +1,82 @@
+[gd_scene load_steps=8 format=3 uid="uid://cwkpgal8fjkmi"]
+
+[ext_resource type="Script" uid="uid://bgl8lsxmpjsk2" path="res://scripts/config_credits.gd" id="1_hlmba"]
+[ext_resource type="AudioStream" uid="uid://3nafyfnxowy1" path="res://sounds/Moonlight Hall.mp3.mp3" id="2_ullkd"]
+[ext_resource type="AudioStream" uid="uid://bpnvt3hpc0xly" path="res://sounds/Exotic Battle.mp3" id="3_vu8qp"]
+[ext_resource type="AudioStream" uid="uid://b1wa2lmec5yye" path="res://sounds/Lord of the Land.mp3" id="4_5u20q"]
+[ext_resource type="FontFile" uid="uid://b2sq8sy45db8v" path="res://Jersey15-Regular.ttf" id="5_4tf71"]
+[ext_resource type="Texture2D" uid="uid://bxpmgm7y3swvg" path="res://sprites/enviroment/menu/button_back.png" id="6_vu8qp"]
+[ext_resource type="AudioStream" uid="uid://d3onv2c31leaw" path="res://sounds/click.wav" id="7_5u20q"]
+
+[node name="Config_credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hlmba")
+music1 = ExtResource("2_ullkd")
+music2 = ExtResource("3_vu8qp")
+music3 = ExtResource("4_5u20q")
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -129.0
+offset_top = -90.0
+offset_right = -79.0
+offset_bottom = -59.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("5_4tf71")
+theme_override_font_sizes/font_size = 32
+icon = ExtResource("6_vu8qp")
+flat = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -218.0
+offset_top = -65.5
+offset_right = 218.0
+offset_bottom = 65.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Music1" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_4tf71")
+theme_override_font_sizes/font_size = 32
+text = "Moonlight Hall - by Kevin MacLeod"
+flat = true
+
+[node name="Music2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_4tf71")
+theme_override_font_sizes/font_size = 32
+text = "Exotic Battle - by Kevin Macleod"
+flat = true
+
+[node name="Music3" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_4tf71")
+theme_override_font_sizes/font_size = 32
+text = "Lord of the Land - by Kevin MacLeod"
+flat = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_5u20q")
+
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="VBoxContainer/Music1" to="." method="_on_music_1_pressed"]
+[connection signal="pressed" from="VBoxContainer/Music2" to="." method="_on_music_2_pressed"]
+[connection signal="pressed" from="VBoxContainer/Music3" to="." method="_on_music_3_pressed"]
