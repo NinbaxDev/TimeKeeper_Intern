@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://djffgadeffnch"]
 
-[ext_resource type="Texture2D" uid="uid://d37vdkwl28t05" path="res://sprites/enviroment/quarto.png" id="1_e80bh"]
 [ext_resource type="Script" uid="uid://ds4r6e45x7q31" path="res://scripts/room_scene.gd" id="1_ltrk6"]
+[ext_resource type="Texture2D" uid="uid://bhp2xtrvk60ac" path="res://sprites/Space_stars.png" id="2_grewx"]
 [ext_resource type="PackedScene" uid="uid://cm0sih118lt2a" path="res://Scenes/player.tscn" id="2_gw577"]
 [ext_resource type="Script" uid="uid://mpmuxe5ieskf" path="res://scripts/area_beed.gd" id="3_4ih6r"]
+[ext_resource type="Texture2D" uid="uid://n3ghqq6gxvlm" path="res://sprites/enviroment/quarto-export.png" id="3_ue4pp"]
 [ext_resource type="Texture2D" uid="uid://moqalfbk1uq1" path="res://sprites/enviroment/menu/button_next_day.png" id="4_ltrk6"]
 [ext_resource type="AudioStream" uid="uid://d3onv2c31leaw" path="res://sounds/click.wav" id="6_gmo20"]
+[ext_resource type="Script" uid="uid://cns6c85qbn6ev" path="res://scripts/Room/animation_player.gd" id="8_ue4pp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ih6r"]
 size = Vector2(1279, 20)
@@ -19,13 +21,56 @@ size = Vector2(58, 742)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gmo20"]
 size = Vector2(329, 261)
 
+[sub_resource type="Animation" id="Animation_0ud7s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Stars:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1373, 688)]
+}
+
+[sub_resource type="Animation" id="Animation_7bvdr"]
+resource_name = "stars"
+length = 9.01
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Stars:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9.01),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1373, 688), Vector2(1157, 596), Vector2(827, 592), Vector2(680, 679), Vector2(689, 388), Vector2(710, 23), Vector2(933, 4), Vector2(1356, 59), Vector2(1294, 346), Vector2(1373, 688)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d0jmg"]
+_data = {
+&"RESET": SubResource("Animation_0ud7s"),
+&"stars": SubResource("Animation_7bvdr")
+}
+
 [node name="room_scene" type="Node2D" unique_id=1965658776]
 script = ExtResource("1_ltrk6")
+
+[node name="Stars" type="Sprite2D" parent="." unique_id=1845509006]
+position = Vector2(1373, 688)
+scale = Vector2(4, 4)
+texture = ExtResource("2_grewx")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=380179035]
 position = Vector2(640, 360)
 scale = Vector2(8, 8)
-texture = ExtResource("1_e80bh")
+texture = ExtResource("3_ue4pp")
 
 [node name="Player" parent="." unique_id=758381780 instance=ExtResource("2_gw577")]
 position = Vector2(188, 596)
@@ -67,6 +112,10 @@ shape = SubResource("RectangleShape2D_gmo20")
 
 [node name="sfx_click" type="AudioStreamPlayer2D" parent="." unique_id=516864245]
 stream = ExtResource("6_gmo20")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=924360124]
+libraries/ = SubResource("AnimationLibrary_d0jmg")
+script = ExtResource("8_ue4pp")
 
 [connection signal="pressed" from="next_day_layer/Next_day_button" to="area_beed" method="_on_next_day_button_pressed"]
 [connection signal="body_entered" from="area_beed" to="area_beed" method="_on_body_entered"]
