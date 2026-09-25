@@ -38,8 +38,11 @@ O jogo gira em torno de duas fases, a primeira é defender uma máquina de inimi
 ### Controles
 
 | Esquerda | A     |
+
 | Direita  | D     |
+
 | Pular    | Space |
+
 | Bater    | LMB   |
 
 ### Jogar
@@ -49,8 +52,7 @@ Link para jogar - https://ninbax-303.itch.io/timekeeper-intern
 
 ## Imagens
 
-![Imagem 1](...)
-![Imagem 2](...)
+![Imagem 1](sprites/enviroment/menu/background_menu.png)
 
 ## Créditos
 
