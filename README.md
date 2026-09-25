@@ -2,8 +2,6 @@
 
 > Você é foi escolhido para manter o tempo em movimento dessa vez, faça seu trabalho e não seja demitido.
 
-[GIF ou imagem principal]
-
 ## Sobre o projeto
 
 TimeKeeper Intern é um jogo de plataforma desenvolvido utilizando Godot 4.4 e atualizado para Godot 4.6.
