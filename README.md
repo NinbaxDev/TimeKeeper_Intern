@@ -12,17 +12,16 @@ O projeto foi desenvolvido para a GMTK 25 junto com um colega, Iko, com o objeti
 
 Fui responsável por:
 
-- Design;
-- Cenários;
-- Animações;
-- Programar inimigos;
+- Design do cenário e inimigos;
+- Animações do player e demais;
 - Corrigir bugs;
+- Implementação dos inimigos;
+- Gerenciamento do estado do jogo;
+- Integração e exportação para HTML5.
 
 ## Gameplay
 
 O jogo gira em torno de duas fases, a primeira é defender uma máquina de inimigos voadores enquanto pula em plataformas, e a segunda é uma pequena corrida para pegar um artefato perdido dentro da torre do tempo.
-
-[GIF de gameplay]
 
 ## Tecnologias
 
@@ -35,13 +34,13 @@ O jogo gira em torno de duas fases, a primeira é defender uma máquina de inimi
 
 ### Controles
 
-| Esquerda | A     |
+| Esquerda | A |
 
-| Direita  | D     |
+| Direita | D |
 
-| Pular    | Space |
+| Pular | Space |
 
-| Bater    | LMB   |
+| Bater | LMB |
 
 ### Jogar
 
@@ -56,8 +55,7 @@ Link para jogar - https://ninbax-303.itch.io/timekeeper-intern
 
 - **Ninbax** — Game Lead
 - Iko
-- [Assets/recursos externos]
 
 ## Licença
 
-[Licença, caso aplicável.]
+MIT License
