@@ -1,0 +1,61 @@
+# TimeKeeper Intern
+
+> Você é foi escolhido para manter o tempo em movimento dessa vez, faça seu trabalho e não seja demitido.
+
+## Sobre o projeto
+
+TimeKeeper Intern é um jogo de plataforma desenvolvido utilizando Godot 4.4 e atualizado para Godot 4.6.
+
+O projeto foi desenvolvido para a GMTK 25 junto com um colega, Iko, com o objetivo de treinar nossas habilidades e buscar aprender mais sobre desenvolvimento de jogos.
+
+## Meu trabalho
+
+Fui responsável por:
+
+- Design do cenário e inimigos;
+- Animações do player e demais;
+- Corrigir bugs;
+- Implementação dos inimigos;
+- Gerenciamento do estado do jogo;
+- Integração e exportação para HTML5.
+
+## Gameplay
+
+O jogo gira em torno de duas fases, a primeira é defender uma máquina de inimigos voadores enquanto pula em plataformas, e a segunda é uma pequena corrida para pegar um artefato perdido dentro da torre do tempo.
+
+## Tecnologias
+
+- **Engine:** Godot 4.4 -> 4.6
+- **Linguagem:** GDScript
+- **Arte:** Aseprite
+- **Áudio:** Freesound
+
+## Como jogar
+
+### Controles
+
+| Esquerda | A |
+
+| Direita | D |
+
+| Pular | Space |
+
+| Bater | LMB |
+
+### Jogar
+
+Link para jogar - https://ninbax-303.itch.io/timekeeper-intern
+
+
+## Imagens
+
+![Imagem 1](sprites/enviroment/menu/background_menu.png)
+
+## Créditos
+
+- **Ninbax** — Game Lead
+- Iko
+
+## Licença
+
+MIT License
